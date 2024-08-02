@@ -1,6 +1,8 @@
-[gd_scene format=3 uid="uid://d3i72ss0cmxsd"]
+[gd_scene load_steps=2 format=3 uid="uid://d3i72ss0cmxsd"]
 
-[node name="ToolSearchScene" type="BoxContainer"]
+[ext_resource type="Script" path="res://scripts/SearchToolScene.cs" id="1_cws66"]
+
+[node name="ToolSearchScene" type="BoxContainer" node_paths=PackedStringArray("SearchBtn", "NameSearchBtn", "DirPathLineEdt", "UpperControlHContainer", "WarningLbl")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -8,18 +10,28 @@ offset_left = -1080.0
 offset_bottom = 720.0
 grow_horizontal = 0
 size_flags_horizontal = 3
+script = ExtResource("1_cws66")
+SearchBtn = NodePath("Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer/Search")
+NameSearchBtn = NodePath("Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer/NameSearch")
+DirPathLineEdt = NodePath("Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer/DirPath")
+UpperControlHContainer = NodePath("Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer")
+WarningLbl = NodePath("Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer/DirEmptyWarn")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="WholeContainer" type="HBoxContainer" parent="Panel"]
+[node name="WholeContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/WholeContainer"]
 layout_mode = 2
@@ -35,49 +47,85 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer"]
+[node name="UpperControlHContainer" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="EmptySpacer" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="EmptySpacer" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer"]
 layout_mode = 2
 text = "指定路径："
 
-[node name="EmptySpacerMid" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="EmptySpacerMid" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.02
 
-[node name="LineEdit" type="LineEdit" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="DirPath" type="LineEdit" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer"]
 layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 4
+size_flags_stretch_ratio = 1.6
 placeholder_text = "输入需要查找的根目录"
 alignment = 1
 
-[node name="EmptySpacer2" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="EmptySpacerMid2" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.24
+
+[node name="Search" type="CheckButton" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer"]
+layout_mode = 2
+text = "普通查询"
+
+[node name="NameSearch" type="CheckButton" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer"]
+layout_mode = 2
+text = "快速查询(文件名)"
+
+[node name="EmptySpacer2" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="EmptySpacer2" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EmptySpacer" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+
+[node name="DirEmptyWarn" type="Label" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 0.0941176, 0.0627451, 1)
+text = "This is warning dialogue."
+horizontal_alignment = 2
+
+[node name="EmptySpacer2" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="LeftVCon" type="VBoxContainer" parent="Panel/WholeContainer/VBoxContainer/HBoxContainer"]
+[node name="LeftGridCon" type="GridContainer" parent="Panel/WholeContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer/HBoxContainer/LeftVCon"]
+[node name="Label" type="Label" parent="Panel/WholeContainer/VBoxContainer/HBoxContainer/LeftGridCon"]
 layout_mode = 2
 
-[node name="RightVCon" type="VBoxContainer" parent="Panel/WholeContainer/VBoxContainer/HBoxContainer"]
+[node name="RightGridCon" type="GridContainer" parent="Panel/WholeContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
