@@ -66,7 +66,7 @@ public partial class SearchToolScene : BoxContainer
 
     public void OnChangeSearchModeToSearch(bool isToggled)
     {
-        if (string.IsNullOrEmpty(DirPathLineEdt.Text))
+        if (!string.IsNullOrEmpty(DirPathLineEdt.Text))
         {
             GD.Print(1, isToggled);
             if (isToggled)
@@ -78,7 +78,7 @@ public partial class SearchToolScene : BoxContainer
 
     public void OnChangeSearchModeToNameSearch(bool isNameToggled)
     {
-        if (string.IsNullOrEmpty(DirPathLineEdt.Text))
+        if (!string.IsNullOrEmpty(DirPathLineEdt.Text))
         {
             GD.Print(2, isNameToggled);
             if (isNameToggled)
@@ -90,26 +90,32 @@ public partial class SearchToolScene : BoxContainer
 
     public void OnPathChanged(string path)
     {
+        SwitchAllButtons(SearchModeCheckBtnList, true);//disable search mode selection
         WarningLbl.Visible = false;
-        SwitchAllButtons(SearchModeCheckBtnList, false);
-
     }
 
     public void OnPathSubmitted(string path)
     {
         if (!string.IsNullOrEmpty(path))
         {
-            if (!Directory.Exists(path))
+            if (Directory.Exists(path))
+            {
+                WarningLbl.Text = $"'{path}' Checked!";
+                WarningLbl.Modulate = new Color("#3cab3c");//ef4369
+                SwitchAllButtons(SearchModeCheckBtnList, false);
+            }
+            else
             {
                 WarningLbl.Text = $"Check that '{path}' exists.";
-                WarningLbl.Visible = true;
+                WarningLbl.Modulate = new Color("#ef4369");
             }
         }
         else
         {
             WarningLbl.Text = "Check that a non-empty path is designated.";
-            WarningLbl.Visible = true;
+            WarningLbl.Modulate = new Color("#ef4369");
         }
+        WarningLbl.Visible = true;
     }
 
     /// <summary>
@@ -122,6 +128,7 @@ public partial class SearchToolScene : BoxContainer
         foreach (BaseButton btn in btns)
         {
             btn.Disabled = disabled;
+            btn.ButtonPressed = false;
         }
     }
 }

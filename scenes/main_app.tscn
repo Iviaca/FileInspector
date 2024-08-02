@@ -145,10 +145,5 @@ size_flags_stretch_ratio = 0.36
 layout_mode = 2
 size_flags_vertical = 1
 
-[node name="LowerSceneCanvas" type="BoxContainer" parent="Canvas/Control/LowerCanvas/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.08
-
-[node name="ToolSearchScene" parent="Canvas/Control/LowerCanvas/HBoxContainer/LowerSceneCanvas" instance=ExtResource("7_5e646")]
+[node name="ToolSearchScene" parent="Canvas/Control/LowerCanvas/HBoxContainer" instance=ExtResource("7_5e646")]
 layout_mode = 2

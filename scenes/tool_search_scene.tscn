@@ -3,12 +3,9 @@
 [ext_resource type="Script" path="res://scripts/SearchToolScene.cs" id="1_cws66"]
 
 [node name="ToolSearchScene" type="BoxContainer" node_paths=PackedStringArray("SearchBtn", "NameSearchBtn", "DirPathLineEdt", "UpperControlHContainer", "WarningLbl")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1080.0
+offset_right = 917.0
 offset_bottom = 720.0
-grow_horizontal = 0
+scale = Vector2(0.767808, 0.800542)
 size_flags_horizontal = 3
 script = ExtResource("1_cws66")
 SearchBtn = NodePath("Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer/Search")
@@ -26,6 +23,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
@@ -40,7 +38,7 @@ size_flags_horizontal = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/WholeContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.25
+size_flags_stretch_ratio = 0.2
 
 [node name="EmptySpacer" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -64,12 +62,14 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.02
 
 [node name="DirPath" type="LineEdit" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.6
 placeholder_text = "输入需要查找的根目录"
 alignment = 1
+caret_blink = true
 
 [node name="EmptySpacerMid2" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/UpperControlHContainer"]
 layout_mode = 2
@@ -101,31 +101,119 @@ size_flags_vertical = 3
 [node name="EmptySpacer" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.8
+size_flags_stretch_ratio = 0.45
 
 [node name="DirEmptyWarn" type="Label" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 visible = false
+modulate = Color(0.937255, 0.262745, 0.411765, 1)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 0.0941176, 0.0627451, 1)
 text = "This is warning dialogue."
-horizontal_alignment = 2
 
 [node name="EmptySpacer2" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/WholeContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
 
-[node name="LeftGridCon" type="GridContainer" parent="Panel/WholeContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/WholeContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="HCon1" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Tsk1Lbl" type="Label" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2/HCon1"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "不包含后缀文件的
+文件夹与上级文件夹:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Label" type="Label" parent="Panel/WholeContainer/VBoxContainer/HBoxContainer/LeftGridCon"]
-layout_mode = 2
-
-[node name="RightGridCon" type="GridContainer" parent="Panel/WholeContainer/VBoxContainer/HBoxContainer"]
+[node name="ExtensionLineEdit" type="LineEdit" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2/HCon1"]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.09
+placeholder_text = "用半角 , 分隔，如：.mp4,.mov,.rmvb,.flv"
+alignment = 1
+expand_to_text_length = true
+caret_blink = true
+
+[node name="Tsk1Submit" type="Button" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2/HCon1"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.1
+text = "提交任务"
+
+[node name="HCon2" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Tsk2Lbl" type="Label" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2/HCon2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "文件大小:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionCompareBar" type="OptionButton" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2/HCon2"]
+layout_mode = 2
+item_count = 5
+selected = 0
+allow_reselect = true
+popup/item_0/text = "＞"
+popup/item_0/id = 0
+popup/item_1/text = "＜"
+popup/item_1/id = 1
+popup/item_2/text = "=="
+popup/item_2/id = 2
+popup/item_3/text = "<="
+popup/item_3/id = 3
+popup/item_4/text = ">="
+popup/item_4/id = 4
+
+[node name="ExtensionLineEdit" type="LineEdit" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2/HCon2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+placeholder_text = "文件大小(整数)"
+alignment = 1
+expand_to_text_length = true
+caret_blink = true
+
+[node name="OptionFileLengthBar" type="OptionButton" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2/HCon2"]
+layout_mode = 2
+item_count = 4
+selected = 3
+allow_reselect = true
+popup/item_0/text = "Byte(s)"
+popup/item_0/id = 0
+popup/item_1/text = "KB"
+popup/item_1/id = 1
+popup/item_2/text = "MB"
+popup/item_2/id = 2
+popup/item_3/text = "GB"
+popup/item_3/id = 3
+
+[node name="Tsk1Submit" type="Button" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2/HCon2"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.1
+text = "提交任务"
