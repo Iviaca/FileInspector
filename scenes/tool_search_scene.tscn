@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://d3i72ss0cmxsd"]
+
+[node name="ToolSearchScene" type="BoxContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1080.0
+offset_bottom = 720.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WholeContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/WholeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/WholeContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="EmptySpacer" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="EmptySpacer" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "指定路径："
+
+[node name="EmptySpacerMid" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.02
+
+[node name="LineEdit" type="LineEdit" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 4
+placeholder_text = "输入需要查找的根目录"
+alignment = 1
+
+[node name="EmptySpacer2" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EmptySpacer2" type="Control" parent="Panel/WholeContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeftVCon" type="VBoxContainer" parent="Panel/WholeContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer/HBoxContainer/LeftVCon"]
+layout_mode = 2
+
+[node name="RightVCon" type="VBoxContainer" parent="Panel/WholeContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3

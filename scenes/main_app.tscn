@@ -1,20 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://dx7q21qxxtlky"]
+[gd_scene load_steps=11 format=3 uid="uid://dx7q21qxxtlky"]
 
 [ext_resource type="Script" path="res://scripts/MainWindow.cs" id="1_3xng2"]
 [ext_resource type="Texture2D" uid="uid://dpyp2pv7k5puv" path="res://backdrop.png" id="1_6siok"]
 [ext_resource type="Script" path="res://scripts/CustomTitleCheckBtn.cs" id="3_35pf2"]
 [ext_resource type="Script" path="res://scripts/CustomTitleBtn.cs" id="3_a5qsa"]
 [ext_resource type="Script" path="res://scripts/TitleBar.cs" id="3_wckpa"]
+[ext_resource type="PackedScene" uid="uid://pvywod58c1a5" path="res://scenes/navigation_grid.tscn" id="6_mny1m"]
+[ext_resource type="PackedScene" uid="uid://d3i72ss0cmxsd" path="res://scenes/tool_search_scene.tscn" id="7_5e646"]
 
 [sub_resource type="Theme" id="Theme_hvo6x"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8fgt"]
-bg_color = Color(0.258824, 0.227451, 0.564706, 0.572549)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ealoy"]
 bg_color = Color(0.447059, 0.427451, 0.835294, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8fgt"]
+bg_color = Color(0.258824, 0.227451, 0.564706, 0.572549)
 
 [node name="MainApp" type="Node"]
 script = ExtResource("1_3xng2")
@@ -36,21 +38,6 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="LowerCanvas" type="Panel" parent="Canvas/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.0666667
-anchor_right = 1.0
-anchor_bottom = 0.999833
-offset_bottom = 0.119999
-grow_horizontal = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = SubResource("Theme_hvo6x")
-theme_type_variation = &"TitleBar"
-theme_override_styles/panel = SubResource("StyleBoxFlat_e8fgt")
-metadata/_edit_use_anchors_ = true
-
 [node name="TitleBar" type="Panel" parent="Canvas/Control"]
 layout_mode = 1
 anchors_preset = -1
@@ -65,6 +52,15 @@ theme_type_variation = &"TitleBar"
 theme_override_styles/panel = SubResource("StyleBoxFlat_ealoy")
 script = ExtResource("3_wckpa")
 metadata/_edit_use_anchors_ = true
+
+[node name="TitleLabel" type="Label" parent="Canvas/Control/TitleBar"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 13.0
+offset_right = 416.0
+offset_bottom = 36.0
+mouse_filter = 1
+text = "Cocoa's Toolbox"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Canvas/Control/TitleBar"]
 layout_mode = 1
@@ -117,3 +113,42 @@ text = "x"
 icon_alignment = 1
 script = ExtResource("3_a5qsa")
 methodName = "QuitApp"
+
+[node name="LowerCanvas" type="Panel" parent="Canvas/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.0666667
+anchor_right = 1.0
+anchor_bottom = 0.999833
+offset_bottom = 0.119999
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_hvo6x")
+theme_type_variation = &"TitleBar"
+theme_override_styles/panel = SubResource("StyleBoxFlat_e8fgt")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Canvas/Control/LowerCanvas"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Canvas/Control/LowerCanvas/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.36
+
+[node name="ScrollContainer" parent="Canvas/Control/LowerCanvas/HBoxContainer/BoxContainer" instance=ExtResource("6_mny1m")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="LowerSceneCanvas" type="BoxContainer" parent="Canvas/Control/LowerCanvas/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.08
+
+[node name="ToolSearchScene" parent="Canvas/Control/LowerCanvas/HBoxContainer/LowerSceneCanvas" instance=ExtResource("7_5e646")]
+layout_mode = 2

@@ -1,7 +1,25 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cjb10m24wxyhj"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cjb10m24wxyhj"]
 
 [sub_resource type="SystemFont" id="SystemFont_dfdjw"]
 font_names = PackedStringArray("Cascadia Code")
+
+[sub_resource type="SystemFont" id="SystemFont_ndxgg"]
+font_names = PackedStringArray("")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0wa6"]
+bg_color = Color(0.6, 0.6, 0.6, 0.784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dl445"]
+bg_color = Color(0.0980392, 0.290196, 0.443137, 0.784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjriv"]
+bg_color = Color(0.545098, 0.627451, 0.941176, 0.784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7rpk"]
+bg_color = Color(0.403922, 0.533333, 0.74902, 0.784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v57hh"]
+bg_color = Color(0.117647, 0.156863, 0.411765, 0.784314)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuoot"]
 corner_radius_top_left = 20
@@ -19,6 +37,14 @@ CustomTitleButton/colors/font_disabled_color = Color(0.4, 0.4, 0.4, 1)
 CustomTitleButton/colors/font_hover_color = Color(0, 0, 0, 1)
 CustomTitleButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 CustomTitleButton/fonts/font = SubResource("SystemFont_dfdjw")
+NavScrollerOptionBtn/base_type = &"Button"
+NavScrollerOptionBtn/font_sizes/font_size = 40
+NavScrollerOptionBtn/fonts/font = SubResource("SystemFont_ndxgg")
+NavScrollerOptionBtn/styles/disabled = SubResource("StyleBoxFlat_l0wa6")
+NavScrollerOptionBtn/styles/focus = SubResource("StyleBoxFlat_dl445")
+NavScrollerOptionBtn/styles/hover = SubResource("StyleBoxFlat_xjriv")
+NavScrollerOptionBtn/styles/normal = SubResource("StyleBoxFlat_k7rpk")
+NavScrollerOptionBtn/styles/pressed = SubResource("StyleBoxFlat_v57hh")
 RoundCornerSubtractor/base_type = &"Panel"
 RoundCornerSubtractor/styles/panel = SubResource("StyleBoxFlat_tuoot")
 TitleBar/base_type = &"Panel"

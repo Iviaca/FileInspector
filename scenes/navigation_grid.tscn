@@ -1,3 +1,53 @@
-[gd_scene format=3 uid="uid://pvywod58c1a5"]
+[gd_scene load_steps=5 format=3 uid="uid://pvywod58c1a5"]
 
-[node name="NavigationGrid" type="Node"]
+[ext_resource type="Script" path="res://scripts/NavOptionBtn.cs" id="1_fjul6"]
+[ext_resource type="PackedScene" uid="uid://d3i72ss0cmxsd" path="res://scenes/tool_search_scene.tscn" id="2_tq3t2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v702w"]
+bg_color = Color(0.294118, 0.521569, 0.796078, 0.560784)
+
+[sub_resource type="Theme" id="Theme_xi6s5"]
+
+[node name="ScrollContainer" type="ScrollContainer"]
+offset_top = 48.0
+offset_right = 272.0
+offset_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_v702w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="OptionBtn1" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+theme = SubResource("Theme_xi6s5")
+theme_type_variation = &"NavScrollerOptionBtn"
+text = "Search Tool"
+script = ExtResource("1_fjul6")
+SelectedScene = ExtResource("2_tq3t2")
+
+[node name="OptionBtn2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+theme = SubResource("Theme_xi6s5")
+theme_type_variation = &"NavScrollerOptionBtn"
+text = "new Tool1"
+script = ExtResource("1_fjul6")
+
+[node name="OptionBtn3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+mouse_filter = 1
+theme = SubResource("Theme_xi6s5")
+theme_type_variation = &"NavScrollerOptionBtn"
+text = "new Tool2"
+script = ExtResource("1_fjul6")
