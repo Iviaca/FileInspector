@@ -122,17 +122,28 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/WholeContainer/VBoxContainer/MarginContainer"]
+[node name="LowerVCon" type="VBoxContainer" parent="Panel/WholeContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 20
+theme_override_constants/separation = 30
 
-[node name="HCon1" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2"]
+[node name="SearchVContainer" type="VBoxContainer" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon"]
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="InitSearch" type="Button" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/SearchVContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "点击初始化搜索
+(可能需要一些时间)"
+
+[node name="HCon1" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/SearchVContainer"]
+layout_mode = 2
+size_flags_vertical = 6
 theme_override_constants/separation = 20
 
-[node name="Tsk1Lbl" type="Label" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2/HCon1"]
+[node name="Tsk1Lbl" type="Label" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/SearchVContainer/HCon1"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "不包含后缀文件的
@@ -140,7 +151,7 @@ text = "不包含后缀文件的
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ExtensionLineEdit" type="LineEdit" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2/HCon1"]
+[node name="ExtensionLineEdit" type="LineEdit" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/SearchVContainer/HCon1"]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -151,7 +162,7 @@ alignment = 1
 expand_to_text_length = true
 caret_blink = true
 
-[node name="Tsk1Submit" type="Button" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2/HCon1"]
+[node name="Tsk1Submit" type="Button" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/SearchVContainer/HCon1"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -159,19 +170,19 @@ size_flags_vertical = 4
 size_flags_stretch_ratio = 0.1
 text = "提交任务"
 
-[node name="HCon2" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2"]
+[node name="HCon2" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/SearchVContainer"]
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 6
 theme_override_constants/separation = 20
 
-[node name="Tsk2Lbl" type="Label" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2/HCon2"]
+[node name="Tsk2Lbl" type="Label" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/SearchVContainer/HCon2"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "文件大小:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionCompareBar" type="OptionButton" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2/HCon2"]
+[node name="OptionCompareBar" type="OptionButton" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/SearchVContainer/HCon2"]
 layout_mode = 2
 item_count = 5
 selected = 0
@@ -187,7 +198,7 @@ popup/item_3/id = 3
 popup/item_4/text = ">="
 popup/item_4/id = 4
 
-[node name="ExtensionLineEdit" type="LineEdit" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2/HCon2"]
+[node name="ExtensionLineEdit" type="LineEdit" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/SearchVContainer/HCon2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -196,7 +207,7 @@ alignment = 1
 expand_to_text_length = true
 caret_blink = true
 
-[node name="OptionFileLengthBar" type="OptionButton" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2/HCon2"]
+[node name="OptionFileLengthBar" type="OptionButton" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/SearchVContainer/HCon2"]
 layout_mode = 2
 item_count = 4
 selected = 3
@@ -210,10 +221,76 @@ popup/item_2/id = 2
 popup/item_3/text = "GB"
 popup/item_3/id = 3
 
-[node name="Tsk1Submit" type="Button" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/VBoxContainer2/HCon2"]
+[node name="Tsk1Submit" type="Button" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/SearchVContainer/HCon2"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.1
 text = "提交任务"
+
+[node name="NameSearchVContainer" type="VBoxContainer" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="InitNameSearch" type="Button" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/NameSearchVContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "点击初始化文件名搜索
+(可能需要一些时间)"
+
+[node name="HCon1" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/NameSearchVContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 20
+
+[node name="Tsk1Lbl" type="Label" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/NameSearchVContainer/HCon1"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "查找重复文件(文件名中有(1)等)："
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Tsk1Submit" type="Button" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/NameSearchVContainer/HCon1"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.1
+text = "提交任务"
+
+[node name="HCon2" type="HBoxContainer" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/NameSearchVContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 20
+
+[node name="Tsk2Lbl" type="Label" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/NameSearchVContainer/HCon2"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "自定义正则表达式"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExtensionLineEdit" type="LineEdit" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/NameSearchVContainer/HCon2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+placeholder_text = "Regex string"
+alignment = 1
+expand_to_text_length = true
+caret_blink = true
+
+[node name="Tsk1Submit" type="Button" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon/NameSearchVContainer/HCon2"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.1
+text = "提交任务"
+
+[node name="NameSearchVContainer2" type="VBoxContainer" parent="Panel/WholeContainer/VBoxContainer/MarginContainer/LowerVCon"]
+layout_mode = 2
+size_flags_vertical = 3
